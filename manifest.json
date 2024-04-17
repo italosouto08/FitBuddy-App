@@ -1,12 +1,21 @@
 {
-  "name": "FitBuddy",
-  "short_name": "FitBuddy",
-  "start_url": "index.html",
+  "background_color": "#141d22",
+  "dir": "ltr",
   "display": "standalone",
+  "name": "FitBuddy",
+  "orientation": "portrait",
+  "scope": "/",
+  "short_name": "FitBuddy",
+  "start_url": "/index.html",
+  "theme_color": "#141d22",
   "description": "Aplicativo criado para quem quer ter uma vida saudável, ajudando a manter o foco em suas atividades físicas e exercícios, mostrando lugares próximos a você em que é possível realizar atividades físicas seja em local público ou fechado como em academias.",
-  "lang": "Portuguese",
-  "theme_color": "#141D22",
-  "background_color": "#141D22",
+  "lang": "pt",
+  "categories": [
+    "fitness",
+    "health",
+    "productivity",
+    "sports"
+  ],
   "icons": [
     {
       "src": "./icons/16.png",
