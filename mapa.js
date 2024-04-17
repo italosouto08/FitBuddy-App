@@ -49,7 +49,7 @@ $.getJSON("Academias.json", function(data) {
   
       // Definir o ícone personalizado para o marcador da localização do usuário
       var customIcon = L.icon({
-        iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+        iconUrl: 'Assets/marker-icon-2x-red.png',
         iconSize: [25, 41],
         iconAnchor: [12, 41],
         popupAnchor: [1, -34],

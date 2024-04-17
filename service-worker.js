@@ -30,6 +30,7 @@ self.addEventListener('install', event => {
         '.Assets/MapaFitBuddy.png',
         '.Assets/search.svg',
         '.Assets/person-circle.svg',
+        '.Assets/marker-icon-2x-red.png',
 
         '.icons/16.png',
         '.icons/29.png',
