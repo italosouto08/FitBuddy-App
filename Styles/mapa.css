@@ -1,6 +1,6 @@
 #map {
     height: 100vh;
-    width: screen;
+    width: 100vh;
     z-index: 0;
 }
 
