@@ -1,3 +1,5 @@
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
+
 var cacheName = 'pwaTeste+-v1.0';
 
 self.addEventListener('install', event => {
