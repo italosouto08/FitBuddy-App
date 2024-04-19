@@ -20,17 +20,17 @@
     {
       "src": "android/android-launchericon-512-512.png",
       "sizes": "512x512",
-      "purpose": "any"
+      "purpose": "maskable"
     },
     {
       "src": "android/android-launchericon-192-192.png",
       "sizes": "192x192",
-      "purpose": "any"
+      "purpose": "maskable"
     },
     {
       "src": "android/android-launchericon-144-144.png",
       "sizes": "144x144",
-      "purpose": "any"
+      "purpose": "maskable"
     },
     {
       "src": "android/android-launchericon-96-96.png",
@@ -140,7 +140,7 @@
     {
       "src": "ios/144.png",
       "sizes": "144x144",
-      "purpose": "any"
+      "purpose": "maskable"
     },
     {
       "src": "ios/152.png",
@@ -160,7 +160,7 @@
     {
       "src": "ios/192.png",
       "sizes": "192x192",
-      "purpose": "any"
+      "purpose": "maskable"
     },
     {
       "src": "ios/256.png",
@@ -170,7 +170,7 @@
     {
       "src": "ios/512.png",
       "sizes": "512x512",
-      "purpose": "any"
+      "purpose": "maskable"
     },
     {
       "src": "ios/1024.png",
