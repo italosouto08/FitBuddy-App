@@ -1,71 +1,87 @@
+$.getJSON("Academias.json", function (data) {
+  var latitudes = [];
+  var longitudes = [];
+  var nomesPolos = [];
+  var nomeRua = [];
+  var nomeBairro = [];
+  var complemento = [];
 
-$.getJSON("Academias.json", function(data) {
+  for (var i = 0; i < data.records.length; i++) {
+    var record = data.records[i];
 
-    var latitudes = [];
-    var longitudes = [];
-    var nomesPolos = [];
-    var nomeRua = [];
-    var nomeBairro = [];
-    var complemento = [];
+    latitudes.push(record[7]);
+    longitudes.push(record[8]);
+    nomesPolos.push(record[1]);
+    nomeRua.push(record[3]);
+    nomeBairro.push(record[4]);
+    complemento.push(record[5]);
+  }
 
-  
- 
-    for (var i = 0; i < data.records.length; i++) {
-      var record = data.records[i];
+  var map = L.map("map").setView([-8.047562, -34.877002], 13);
 
-      latitudes.push(record[7]);
-      longitudes.push(record[8]);
-      nomesPolos.push(record[1]);
-      nomeRua.push(record[3]);
-      nomeBairro.push(record[4]);
-      complemento.push(record[5]);
-    }
-  
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
 
-    var map = L.map('map').setView([-8.047562, -34.877002], 13); 
-  
+  for (var i = 0; i < latitudes.length; i++) {
+    var marker = L.marker([latitudes[i], longitudes[i]]).addTo(map);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-  
+    var popupContent =
+      "Nome do Polo: " +
+      nomesPolos[i] +
+      "<br>" +
+      "Rua: " +
+      nomeRua[i] +
+      "<br>" +
+      "Bairro: " +
+      nomeBairro[i] +
+      "<br>" +
+      "Complemento: " +
+      complemento[i];
 
-    for (var i = 0; i < latitudes.length; i++) {
-      var marker = L.marker([latitudes[i], longitudes[i]]).addTo(map);
+    marker.bindPopup(popupContent);
+  }
 
-      var popupContent = "Nome do Polo: " + nomesPolos[i] + "<br>" +
-                         "Rua: " + nomeRua[i] + "<br>" +
-                         "Bairro: " + nomeBairro[i] + "<br>" +
-                         "Complemento: " + complemento[i];
+  var userMarker;
+  var userLat, userLng;
 
-      marker.bindPopup(popupContent);
-    }
+  navigator.geolocation.watchPosition(function (position) {
+    userLat = position.coords.latitude;
+    userLng = position.coords.longitude;
 
-
-      var userMarker;
-      navigator.geolocation.watchPosition(function(position) {
-      var userLat = position.coords.latitude;
-      var userLng = position.coords.longitude;
-  
-
-      var customIcon = L.icon({
-        iconUrl: './Assets/marker-icon-2x-red.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        tooltipAnchor: [16, -28],
-        shadowSize: [41, 41]
-      });
-
-
-      if (!userMarker) {
-        userMarker = L.marker([userLat, userLng], { icon: customIcon }).addTo(map);
-        userMarker.bindPopup("Sua Localização").openPopup();
-      } else {
-        userMarker.setLatLng([userLat, userLng]);
-      }
-  
-
-      map.setView([userLat, userLng], 13);
+    var customIcon = L.icon({
+      iconUrl: "./Assets/marker-icon-2x-red.png",
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      tooltipAnchor: [16, -28],
+      shadowSize: [41, 41],
     });
+
+    if (!userMarker) {
+      userMarker = L.marker([userLat, userLng], { icon: customIcon }).addTo(
+        map
+      );
+      userMarker.bindPopup("Sua Localização").openPopup();
+    } else {
+      userMarker.setLatLng([userLat, userLng]);
+    }
+
+    map.setView([userLat, userLng], 13);
   });
+
+  // Adiciona evento de clique ao botão para recentralizar o mapa na localização do usuário
+  document
+    .getElementById("locateButton")
+    .addEventListener("click", function () {
+      if (userLat && userLng) {
+        map.setView([userLat, userLng], 13);
+        if (userMarker) {
+          userMarker.openPopup();
+        }
+      } else {
+        alert("A localização do usuário ainda não foi determinada.");
+      }
+    });
+});

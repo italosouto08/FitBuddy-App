@@ -1,43 +1,74 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 #map {
-    height: 100vh;
-    width: 100%;
-    z-index: 0;
+  width: 100%;
+  z-index: 0;
+  flex: 1;
 }
 
 .navbar-bottom {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #EEEAEA;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 65.41px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    z-index: 1000; 
-    border-radius: 10px 10px 0 0 ;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #eeeaea;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 65.41px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 10px 10px 0 0;
 }
 
 .icon-white {
-    filter: brightness(0) invert(1);
-    padding-bottom: 5px;
+  filter: brightness(0) invert(1);
+  padding-bottom: 5px;
 }
 
-.icon-menu{
-    width: 30px;
+.icon-menu {
+  width: 30px;
 }
 
-main{
-    width: 100%;
-    font-family: 'Poppins', sans-serif;
+main {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
 }
 
 #navSearch {
-    position: fixed; 
-    top: 50px; 
-    width: calc(100% - 45px); 
-    z-index: 1000; 
-    margin: 20px;
-    border-radius: 10px;
-    padding: 2px;
+  position: fixed;
+  top: 50px;
+  width: calc(100% - 45px);
+  z-index: 1000;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+#locateButton {
+  position: absolute;
+  bottom: 90px;
+  right: 10px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 11px;
+  background-color: #141d22;
+  border: none;
+  border-radius: 50%;
+}
+
+#locateButton img {
+  display: block;
 }
